@@ -1,0 +1,1022 @@
+CREATE DATABASE  IF NOT EXISTS `Pamoja` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `Pamoja`;
+-- MySQL dump 10.13  Distrib 5.6.13, for osx10.6 (i386)
+--
+-- Host: 127.0.0.1    Database: Pamoja
+-- ------------------------------------------------------
+-- Server version	5.6.14
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `accesscondition_object`
+--
+
+DROP TABLE IF EXISTS `accesscondition_object`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `accesscondition_object` (
+  `id` int(11) NOT NULL,
+  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `oid` int(11) NOT NULL,
+  `accesscondition_type_id` int(11) NOT NULL,
+  `accesscondition_target_id` int(11) NOT NULL,
+  `value` varchar(250) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `accesscondition_object`
+--
+
+LOCK TABLES `accesscondition_object` WRITE;
+/*!40000 ALTER TABLE `accesscondition_object` DISABLE KEYS */;
+/*!40000 ALTER TABLE `accesscondition_object` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `accesscondition_project`
+--
+
+DROP TABLE IF EXISTS `accesscondition_project`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `accesscondition_project` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `user_id` int(11) NOT NULL,
+  `project_id` int(11) NOT NULL,
+  `accesscondition_type_id` int(11) NOT NULL,
+  `accesscondition_target_id` int(11) NOT NULL,
+  `value` varchar(250) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `accesscondition_project`
+--
+
+LOCK TABLES `accesscondition_project` WRITE;
+/*!40000 ALTER TABLE `accesscondition_project` DISABLE KEYS */;
+INSERT INTO `accesscondition_project` VALUES (1,'2013-11-08 15:56:30',1,0,6,1,NULL),(2,'2013-11-08 15:56:30',1,0,6,2,NULL),(3,'2013-11-08 15:56:30',1,0,6,3,NULL),(4,'2013-11-08 15:56:30',1,0,6,4,NULL),(5,'2013-11-08 15:56:30',1,0,6,5,NULL),(6,'2013-11-08 15:56:30',1,0,6,6,NULL),(7,'2013-11-08 15:56:30',1,0,6,7,NULL),(8,'2013-11-08 15:56:30',1,0,6,8,NULL),(9,'2013-11-08 15:56:30',1,0,6,9,NULL),(10,'2013-11-08 15:56:30',1,0,6,10,NULL);
+/*!40000 ALTER TABLE `accesscondition_project` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `accesscondition_target`
+--
+
+DROP TABLE IF EXISTS `accesscondition_target`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `accesscondition_target` (
+  `accesscondition_target_id` int(11) NOT NULL AUTO_INCREMENT,
+  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'value	description\nhtml	HTML document\nJP2	Jpeg2000 image\njpg150	150 px and smaller JPG.\njpg2000	2000 px and smaller JPG\njpg600	600 px and smaller JPG\npdf	PDF document\nt0	Full resolution TIF image\nt2	Half page TIF image\nt4	Quarter page TIF image\nzoom	Image zoom option',
+  `user_id` int(11) NOT NULL,
+  `label` varchar(45) NOT NULL,
+  PRIMARY KEY (`accesscondition_target_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `accesscondition_target`
+--
+
+LOCK TABLES `accesscondition_target` WRITE;
+/*!40000 ALTER TABLE `accesscondition_target` DISABLE KEYS */;
+INSERT INTO `accesscondition_target` VALUES (1,'2013-11-08 15:52:22',1,'html'),(2,'2013-11-08 15:52:22',1,'JP2'),(3,'2013-11-08 15:52:22',1,'jpg150'),(4,'2013-11-08 15:52:22',1,'jpg600'),(5,'2013-11-08 15:52:22',1,'jpg2000'),(6,'2013-11-08 15:52:22',1,'pdf'),(7,'2013-11-08 15:52:22',1,'t0'),(8,'2013-11-08 15:52:22',1,'t2'),(9,'2013-11-08 15:52:22',1,'t4'),(10,'2013-11-08 15:52:22',1,'zoom');
+/*!40000 ALTER TABLE `accesscondition_target` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `accesscondition_type`
+--
+
+DROP TABLE IF EXISTS `accesscondition_type`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `accesscondition_type` (
+  `accesscondition_type_id` int(11) NOT NULL AUTO_INCREMENT,
+  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `user_id` int(11) NOT NULL,
+  `label` varchar(45) NOT NULL COMMENT 'value	description\nAD Group Restriction	Provide list of AD groups that may access this object.\nAeon Registration Required	In order to access this object, you must register with Aeon regardless of being on or off the Yale network.\nIP Restriction	Provide list of IP addresses or IP ranges that may access this object\nNetID Restriction	Provide list of NetIDs that may access this object\nOpen Access	Open to the world, there are no restrictions for download. This is different than acceptable use policies.\nYale Only	Object will be available to all computers on the Yale network including Yale Wireless and Yale Secure wireless networks. CAS authentication will also be available for off-campus use as well as VPN.',
+  PRIMARY KEY (`accesscondition_type_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `accesscondition_type`
+--
+
+LOCK TABLES `accesscondition_type` WRITE;
+/*!40000 ALTER TABLE `accesscondition_type` DISABLE KEYS */;
+INSERT INTO `accesscondition_type` VALUES (1,'2013-11-08 15:50:27',1,'AD Group Restriction'),(2,'2013-11-08 15:50:28',1,'Aeon Registration Required'),(3,'2013-11-08 15:50:28',1,'IP Restriction'),(4,'2013-11-08 15:50:28',1,'NetID Restriction'),(5,'2013-11-08 15:50:28',1,'Open Access'),(6,'2013-11-08 15:50:28',1,'Campus Only');
+/*!40000 ALTER TABLE `accesscondition_type` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `authority_control`
+--
+
+DROP TABLE IF EXISTS `authority_control`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `authority_control` (
+  `acid` int(11) NOT NULL AUTO_INCREMENT,
+  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `fdid` int(11) NOT NULL,
+  `value` varchar(1500) NOT NULL,
+  `code` varchar(15) DEFAULT NULL,
+  `user_id` int(11) NOT NULL,
+  PRIMARY KEY (`acid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `authority_control`
+--
+
+LOCK TABLES `authority_control` WRITE;
+/*!40000 ALTER TABLE `authority_control` DISABLE KEYS */;
+/*!40000 ALTER TABLE `authority_control` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `authority_control_version`
+--
+
+DROP TABLE IF EXISTS `authority_control_version`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `authority_control_version` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `change_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `change_user_id` int(11) NOT NULL,
+  `acid` int(11) NOT NULL,
+  `date` datetime NOT NULL,
+  `fdid` int(11) NOT NULL,
+  `value` varchar(1500) NOT NULL,
+  `code` varchar(15) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `action` varchar(10) DEFAULT 'update',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `authority_control_version`
+--
+
+LOCK TABLES `authority_control_version` WRITE;
+/*!40000 ALTER TABLE `authority_control_version` DISABLE KEYS */;
+/*!40000 ALTER TABLE `authority_control_version` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `collection`
+--
+
+DROP TABLE IF EXISTS `collection`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `collection` (
+  `collection_id` int(11) NOT NULL AUTO_INCREMENT,
+  `label` varchar(45) NOT NULL,
+  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`collection_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `collection`
+--
+
+LOCK TABLES `collection` WRITE;
+/*!40000 ALTER TABLE `collection` DISABLE KEYS */;
+/*!40000 ALTER TABLE `collection` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `event_type`
+--
+
+DROP TABLE IF EXISTS `event_type`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `event_type` (
+  `event_type_id` int(11) NOT NULL AUTO_INCREMENT,
+  `date` datetime DEFAULT CURRENT_TIMESTAMP,
+  `label` varchar(45) DEFAULT NULL,
+  `category` varchar(45) DEFAULT NULL COMMENT 'options:\nsystem\npremis\n',
+  PRIMARY KEY (`event_type_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `event_type`
+--
+
+LOCK TABLES `event_type` WRITE;
+/*!40000 ALTER TABLE `event_type` DISABLE KEYS */;
+/*!40000 ALTER TABLE `event_type` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `field_definition`
+--
+
+DROP TABLE IF EXISTS `field_definition`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `field_definition` (
+  `fdid` int(11) NOT NULL,
+  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `type` varchar(15) NOT NULL DEFAULT 'string',
+  `acid` int(11) NOT NULL DEFAULT '0',
+  `faid` int(11) NOT NULL DEFAULT '0',
+  `handle` varchar(45) NOT NULL,
+  `tooltip` varchar(500) DEFAULT NULL,
+  `multivalue` int(11) NOT NULL DEFAULT '1',
+  `display` int(11) NOT NULL DEFAULT '1',
+  `technical` int(11) NOT NULL DEFAULT '0',
+  `export` int(11) NOT NULL DEFAULT '1',
+  `locked` int(11) NOT NULL DEFAULT '0',
+  `required` varchar(1) NOT NULL DEFAULT 'n',
+  `style` varchar(10) NOT NULL DEFAULT 'string',
+  PRIMARY KEY (`fdid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `field_definition`
+--
+
+LOCK TABLES `field_definition` WRITE;
+/*!40000 ALTER TABLE `field_definition` DISABLE KEYS */;
+/*!40000 ALTER TABLE `field_definition` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `field_definition_version`
+--
+
+DROP TABLE IF EXISTS `field_definition_version`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `field_definition_version` (
+  `id` int(11) NOT NULL,
+  `change_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `change_user_id` int(11) NOT NULL,
+  `fdid` int(11) NOT NULL,
+  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `type` varchar(15) NOT NULL DEFAULT 'string',
+  `acid` int(11) NOT NULL DEFAULT '0',
+  `faid` int(11) NOT NULL DEFAULT '0',
+  `handle` varchar(45) NOT NULL,
+  `tooltip` varchar(500) DEFAULT NULL,
+  `multivalue` int(11) NOT NULL DEFAULT '1',
+  `display` int(11) NOT NULL DEFAULT '1',
+  `technical` int(11) NOT NULL DEFAULT '0',
+  `export` int(11) NOT NULL DEFAULT '1',
+  `locked` int(11) NOT NULL DEFAULT '0',
+  `required` varchar(1) NOT NULL DEFAULT 'n',
+  `style` varchar(10) NOT NULL DEFAULT 'string',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `field_definition_version`
+--
+
+LOCK TABLES `field_definition_version` WRITE;
+/*!40000 ALTER TABLE `field_definition_version` DISABLE KEYS */;
+/*!40000 ALTER TABLE `field_definition_version` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `gui`
+--
+
+DROP TABLE IF EXISTS `gui`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `gui` (
+  `gui_id` int(11) NOT NULL AUTO_INCREMENT,
+  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `user_id` int(11) NOT NULL,
+  `webform` varchar(45) NOT NULL,
+  `label` varchar(45) NOT NULL,
+  `group` varchar(45) NOT NULL,
+  `zindex` int(11) NOT NULL DEFAULT '10',
+  PRIMARY KEY (`gui_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `gui`
+--
+
+LOCK TABLES `gui` WRITE;
+/*!40000 ALTER TABLE `gui` DISABLE KEYS */;
+/*!40000 ALTER TABLE `gui` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `hydra`
+--
+
+DROP TABLE IF EXISTS `hydra`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `hydra` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `oid` int(11) NOT NULL,
+  `date_publish` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `hydra`
+--
+
+LOCK TABLES `hydra` WRITE;
+/*!40000 ALTER TABLE `hydra` DISABLE KEYS */;
+/*!40000 ALTER TABLE `hydra` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `hydra_contentmodel`
+--
+
+DROP TABLE IF EXISTS `hydra_contentmodel`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `hydra_contentmodel` (
+  `hydra_contentmodel_id` int(11) NOT NULL AUTO_INCREMENT,
+  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `user_id` int(11) NOT NULL,
+  `label` varchar(45) NOT NULL,
+  PRIMARY KEY (`hydra_contentmodel_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `hydra_contentmodel`
+--
+
+LOCK TABLES `hydra_contentmodel` WRITE;
+/*!40000 ALTER TABLE `hydra_contentmodel` DISABLE KEYS */;
+/*!40000 ALTER TABLE `hydra_contentmodel` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `hydra_contentmodel_ds`
+--
+
+DROP TABLE IF EXISTS `hydra_contentmodel_ds`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `hydra_contentmodel_ds` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `user_id` int(11) NOT NULL,
+  `hydra_contentmodel_id` int(11) NOT NULL,
+  `dsid` varchar(50) NOT NULL,
+  `ingestmethod` varchar(50) NOT NULL,
+  `required` varchar(1) NOT NULL DEFAULT 'y',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `hydra_contentmodel_ds`
+--
+
+LOCK TABLES `hydra_contentmodel_ds` WRITE;
+/*!40000 ALTER TABLE `hydra_contentmodel_ds` DISABLE KEYS */;
+/*!40000 ALTER TABLE `hydra_contentmodel_ds` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `hydra_publish`
+--
+
+DROP TABLE IF EXISTS `hydra_publish`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `hydra_publish` (
+  `hydra_publish_id` int(11) NOT NULL AUTO_INCREMENT,
+  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `hydra_contentmodel_id` int(11) NOT NULL,
+  `collection_id` int(11) NOT NULL,
+  `project_id` int(11) NOT NULL,
+  `oid` int(11) NOT NULL,
+  `_oid` int(11) NOT NULL DEFAULT '0',
+  `zindex` int(11) NOT NULL DEFAULT '0',
+  `_boid` int(11) NOT NULL DEFAULT '0',
+  `_bindex` int(11) NOT NULL DEFAULT '0',
+  `hydraid` varchar(45) DEFAULT NULL,
+  `action` varchar(10) NOT NULL,
+  `dateready` datetime DEFAULT NULL,
+  `datehydrastart` datetime DEFAULT NULL,
+  `datehydraend` datetime DEFAULT NULL,
+  `dateaudit` datetime DEFAULT NULL,
+  `attempts` int(11) NOT NULL DEFAULT '0',
+  `priority` int(11) NOT NULL DEFAULT '20',
+  `server` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`hydra_publish_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `hydra_publish`
+--
+
+LOCK TABLES `hydra_publish` WRITE;
+/*!40000 ALTER TABLE `hydra_publish` DISABLE KEYS */;
+/*!40000 ALTER TABLE `hydra_publish` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `hydra_publish_path`
+--
+
+DROP TABLE IF EXISTS `hydra_publish_path`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `hydra_publish_path` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `hydra_publish_id` int(11) NOT NULL,
+  `type` varchar(45) NOT NULL,
+  `pathhttp` varchar(500) NOT NULL,
+  `pathunc` varchar(500) NOT NULL,
+  `md5` varchar(32) NOT NULL,
+  `sha256` varchar(64) NOT NULL,
+  `controlgroup` varchar(10) DEFAULT NULL,
+  `mimetype` varchar(50) NOT NULL,
+  `dsid` varchar(150) NOT NULL,
+  `ingestmethod` varchar(50) NOT NULL,
+  `altids` varchar(50) DEFAULT NULL,
+  `dslabel` varchar(50) DEFAULT NULL,
+  `versionable` int(11) DEFAULT NULL,
+  `dsstate` varchar(50) DEFAULT NULL,
+  `logmessage` varchar(500) DEFAULT NULL,
+  `oidpointer` int(11) DEFAULT NULL,
+  `file_size` int(11) NOT NULL,
+  `file_extension` varchar(15) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `hydra_publish_path`
+--
+
+LOCK TABLES `hydra_publish_path` WRITE;
+/*!40000 ALTER TABLE `hydra_publish_path` DISABLE KEYS */;
+/*!40000 ALTER TABLE `hydra_publish_path` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `import_file`
+--
+
+DROP TABLE IF EXISTS `import_file`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `import_file` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `import_id` varchar(45) NOT NULL,
+  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `file_location` varchar(2500) NOT NULL,
+  `oid` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `code` int(11) DEFAULT NULL,
+  `error` varchar(500) DEFAULT NULL,
+  `type` varchar(45) DEFAULT NULL,
+  `label` varchar(150) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `import_file`
+--
+
+LOCK TABLES `import_file` WRITE;
+/*!40000 ALTER TABLE `import_file` DISABLE KEYS */;
+/*!40000 ALTER TABLE `import_file` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `import_job`
+--
+
+DROP TABLE IF EXISTS `import_job`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `import_job` (
+  `import_id` int(11) NOT NULL AUTO_INCREMENT,
+  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `user_id` int(11) NOT NULL,
+  `job_file` varchar(150) NOT NULL,
+  `job_directory` varchar(500) NOT NULL,
+  PRIMARY KEY (`import_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `import_job`
+--
+
+LOCK TABLES `import_job` WRITE;
+/*!40000 ALTER TABLE `import_job` DISABLE KEYS */;
+/*!40000 ALTER TABLE `import_job` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `import_job_contents`
+--
+
+DROP TABLE IF EXISTS `import_job_contents`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `import_job_contents` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `import_id` int(11) NOT NULL,
+  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `row` int(11) NOT NULL,
+  `col` int(11) NOT NULL,
+  `complete` varchar(1) NOT NULL DEFAULT 'n',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `import_job_contents`
+--
+
+LOCK TABLES `import_job_contents` WRITE;
+/*!40000 ALTER TABLE `import_job_contents` DISABLE KEYS */;
+/*!40000 ALTER TABLE `import_job_contents` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `import_job_exhead`
+--
+
+DROP TABLE IF EXISTS `import_job_exhead`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `import_job_exhead` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `import_id` int(11) NOT NULL,
+  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `value` varchar(45) DEFAULT NULL,
+  `col` int(11) DEFAULT NULL,
+  `func` varchar(45) DEFAULT NULL,
+  `fdid` int(11) DEFAULT NULL,
+  `import` varchar(1) DEFAULT 'n',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `import_job_exhead`
+--
+
+LOCK TABLES `import_job_exhead` WRITE;
+/*!40000 ALTER TABLE `import_job_exhead` DISABLE KEYS */;
+/*!40000 ALTER TABLE `import_job_exhead` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `import_source`
+--
+
+DROP TABLE IF EXISTS `import_source`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `import_source` (
+  `import_source_id` int(11) NOT NULL AUTO_INCREMENT,
+  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `sourceid` varchar(45) DEFAULT NULL,
+  `import_id` int(11) DEFAULT NULL,
+  `col` int(11) DEFAULT NULL,
+  `row` int(11) DEFAULT NULL,
+  `schema` varchar(45) DEFAULT NULL,
+  `url` varchar(500) DEFAULT NULL,
+  PRIMARY KEY (`import_source_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `import_source`
+--
+
+LOCK TABLES `import_source` WRITE;
+/*!40000 ALTER TABLE `import_source` DISABLE KEYS */;
+/*!40000 ALTER TABLE `import_source` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `import_source_data`
+--
+
+DROP TABLE IF EXISTS `import_source_data`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `import_source_data` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `import_source_id` int(11) NOT NULL,
+  `k1` varchar(500) DEFAULT NULL,
+  `k2` varchar(500) DEFAULT NULL,
+  `k3` varchar(500) DEFAULT NULL,
+  `attr` varchar(50) DEFAULT NULL,
+  `attr_val` varchar(150) DEFAULT NULL,
+  `value` varchar(5000) DEFAULT NULL,
+  `zindex` int(11) DEFAULT NULL,
+  `notes` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `import_source_data`
+--
+
+LOCK TABLES `import_source_data` WRITE;
+/*!40000 ALTER TABLE `import_source_data` DISABLE KEYS */;
+/*!40000 ALTER TABLE `import_source_data` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `object`
+--
+
+DROP TABLE IF EXISTS `object`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `object` (
+  `oid` int(11) NOT NULL AUTO_INCREMENT,
+  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `project_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL DEFAULT '0',
+  `_oid` int(11) NOT NULL DEFAULT '0',
+  `zindex` int(11) NOT NULL DEFAULT '0',
+  `parent` varchar(1) NOT NULL DEFAULT 'n',
+  `_boid` int(11) NOT NULL DEFAULT '0',
+  `bindex` int(11) NOT NULL DEFAULT '0',
+  `bparent` varchar(1) NOT NULL DEFAULT 'n',
+  `_roid` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`oid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `object`
+--
+
+LOCK TABLES `object` WRITE;
+/*!40000 ALTER TABLE `object` DISABLE KEYS */;
+/*!40000 ALTER TABLE `object` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `object_acid`
+--
+
+DROP TABLE IF EXISTS `object_acid`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `object_acid` (
+  `data_id` int(11) NOT NULL AUTO_INCREMENT,
+  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `user_id` int(11) NOT NULL,
+  `object_id` int(11) NOT NULL,
+  `value` int(11) NOT NULL,
+  `fdid` int(11) NOT NULL,
+  PRIMARY KEY (`data_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `object_acid`
+--
+
+LOCK TABLES `object_acid` WRITE;
+/*!40000 ALTER TABLE `object_acid` DISABLE KEYS */;
+/*!40000 ALTER TABLE `object_acid` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `object_event`
+--
+
+DROP TABLE IF EXISTS `object_event`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `object_event` (
+  `event_id` int(11) NOT NULL AUTO_INCREMENT,
+  `event_type_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `oid` int(11) NOT NULL,
+  `event` varchar(500) NOT NULL,
+  PRIMARY KEY (`event_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `object_event`
+--
+
+LOCK TABLES `object_event` WRITE;
+/*!40000 ALTER TABLE `object_event` DISABLE KEYS */;
+/*!40000 ALTER TABLE `object_event` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `object_file`
+--
+
+DROP TABLE IF EXISTS `object_file`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `object_file` (
+  `data_id` int(11) NOT NULL AUTO_INCREMENT,
+  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `user_id` int(11) NOT NULL,
+  `oid` int(11) NOT NULL,
+  `file_label` varchar(150) DEFAULT NULL,
+  `file_name` varchar(150) DEFAULT NULL,
+  `file_path` varchar(2500) DEFAULT NULL,
+  `file_ext` varchar(15) DEFAULT NULL,
+  `file_size` int(11) DEFAULT NULL,
+  `md5` varchar(32) DEFAULT NULL,
+  `sha256` varchar(64) DEFAULT NULL,
+  `hydra_publish_id` int(11) DEFAULT NULL,
+  `status` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`data_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `object_file`
+--
+
+LOCK TABLES `object_file` WRITE;
+/*!40000 ALTER TABLE `object_file` DISABLE KEYS */;
+/*!40000 ALTER TABLE `object_file` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `object_longstring`
+--
+
+DROP TABLE IF EXISTS `object_longstring`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `object_longstring` (
+  `data_id` int(11) NOT NULL AUTO_INCREMENT,
+  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `user_id` int(11) NOT NULL,
+  `oid` varchar(45) NOT NULL,
+  `value` blob NOT NULL,
+  `fdid` int(11) NOT NULL,
+  PRIMARY KEY (`data_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `object_longstring`
+--
+
+LOCK TABLES `object_longstring` WRITE;
+/*!40000 ALTER TABLE `object_longstring` DISABLE KEYS */;
+/*!40000 ALTER TABLE `object_longstring` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `object_string`
+--
+
+DROP TABLE IF EXISTS `object_string`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `object_string` (
+  `data_id` int(11) NOT NULL AUTO_INCREMENT,
+  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `user_id` int(11) NOT NULL,
+  `oid` int(11) NOT NULL,
+  `value` varchar(1500) NOT NULL,
+  `fdid` int(11) NOT NULL,
+  PRIMARY KEY (`data_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `object_string`
+--
+
+LOCK TABLES `object_string` WRITE;
+/*!40000 ALTER TABLE `object_string` DISABLE KEYS */;
+/*!40000 ALTER TABLE `object_string` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `project`
+--
+
+DROP TABLE IF EXISTS `project`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `project` (
+  `project_id` int(11) NOT NULL AUTO_INCREMENT,
+  `label` varchar(45) NOT NULL,
+  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `user_id` int(11) DEFAULT NULL,
+  `location` varchar(150) DEFAULT NULL,
+  `url` varchar(250) DEFAULT NULL,
+  `add1` varchar(150) DEFAULT NULL,
+  `add2` varchar(85) DEFAULT NULL,
+  `city` varchar(45) DEFAULT NULL,
+  `state` varchar(25) DEFAULT NULL,
+  `zip` varchar(15) DEFAULT NULL,
+  `phone` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`project_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `project`
+--
+
+LOCK TABLES `project` WRITE;
+/*!40000 ALTER TABLE `project` DISABLE KEYS */;
+/*!40000 ALTER TABLE `project` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `project_field`
+--
+
+DROP TABLE IF EXISTS `project_field`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `project_field` (
+  `id` int(11) NOT NULL,
+  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `user_id` int(11) NOT NULL,
+  `project_id` int(11) NOT NULL,
+  `fdid` int(11) NOT NULL,
+  `zindex` int(11) NOT NULL DEFAULT '0',
+  `groupname` varchar(75) NOT NULL DEFAULT 'metadata',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `project_field`
+--
+
+LOCK TABLES `project_field` WRITE;
+/*!40000 ALTER TABLE `project_field` DISABLE KEYS */;
+/*!40000 ALTER TABLE `project_field` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `user`
+--
+
+DROP TABLE IF EXISTS `user`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `user` (
+  `user_id` int(11) NOT NULL AUTO_INCREMENT,
+  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `username` varchar(45) NOT NULL,
+  `password` varchar(64) DEFAULT NULL,
+  `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `date_edited` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `date_lastused` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `_user_id` int(11) NOT NULL COMMENT 'user ID of the person that created this account',
+  `name` varchar(80) DEFAULT NULL,
+  `email` varchar(80) DEFAULT NULL,
+  PRIMARY KEY (`user_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `user`
+--
+
+LOCK TABLES `user` WRITE;
+/*!40000 ALTER TABLE `user` DISABLE KEYS */;
+INSERT INTO `user` VALUES (1,'2013-11-08 15:47:53','mf438','xxx','2013-11-08 15:47:53','2013-11-08 15:47:53','2013-11-08 15:47:53',1,'Mike Friscia','michael.friscia@yale.edu');
+/*!40000 ALTER TABLE `user` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `user_gui`
+--
+
+DROP TABLE IF EXISTS `user_gui`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `user_gui` (
+  `id` int(11) NOT NULL,
+  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `user_id` int(11) NOT NULL,
+  `gui_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `user_gui`
+--
+
+LOCK TABLES `user_gui` WRITE;
+/*!40000 ALTER TABLE `user_gui` DISABLE KEYS */;
+/*!40000 ALTER TABLE `user_gui` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `user_project`
+--
+
+DROP TABLE IF EXISTS `user_project`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `user_project` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `user_id` int(11) NOT NULL,
+  `project_id` int(11) NOT NULL,
+  `role` varchar(10) NOT NULL DEFAULT 'editor',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `user_project`
+--
+
+LOCK TABLES `user_project` WRITE;
+/*!40000 ALTER TABLE `user_project` DISABLE KEYS */;
+/*!40000 ALTER TABLE `user_project` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `user_project_field`
+--
+
+DROP TABLE IF EXISTS `user_project_field`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `user_project_field` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `user_id` int(11) NOT NULL,
+  `project_id` int(11) NOT NULL,
+  `fdid` int(11) NOT NULL,
+  `role` varchar(10) NOT NULL DEFAULT 'no access',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `user_project_field`
+--
+
+LOCK TABLES `user_project_field` WRITE;
+/*!40000 ALTER TABLE `user_project_field` DISABLE KEYS */;
+/*!40000 ALTER TABLE `user_project_field` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2013-11-08 16:26:35
