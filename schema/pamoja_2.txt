@@ -305,6 +305,34 @@ LOCK TABLES `field_definition_version` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `field_marc_mapping`
+--
+
+DROP TABLE IF EXISTS `field_marc_mapping`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `field_marc_mapping` (
+  `id` int(11) NOT NULL,
+  `date` datetime DEFAULT CURRENT_TIMESTAMP,
+  `k1` varchar(3) DEFAULT NULL,
+  `k2` varchar(3) DEFAULT NULL,
+  `concat` varchar(1) DEFAULT NULL,
+  `delim` varchar(10) DEFAULT NULL,
+  `fdid` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `field_marc_mapping`
+--
+
+LOCK TABLES `field_marc_mapping` WRITE;
+/*!40000 ALTER TABLE `field_marc_mapping` DISABLE KEYS */;
+/*!40000 ALTER TABLE `field_marc_mapping` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `gui`
 --
 
@@ -556,11 +584,12 @@ DROP TABLE IF EXISTS `import_job_contents`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `import_job_contents` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `import_id` int(11) NOT NULL,
   `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `row` int(11) NOT NULL,
   `col` int(11) NOT NULL,
+  `value` longtext,
   `complete` varchar(1) NOT NULL DEFAULT 'n',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -1019,4 +1048,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-11-08 16:26:35
+-- Dump completed on 2014-01-28 15:46:45
