@@ -528,7 +528,7 @@ DROP TABLE IF EXISTS `import_file`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `import_file` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `import_id` varchar(45) NOT NULL,
+  `import_id` int(11) NOT NULL,
   `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `file_location` varchar(2500) NOT NULL,
   `oid` int(11) NOT NULL,
