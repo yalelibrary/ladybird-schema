@@ -17,6 +17,21 @@ USE `Pamoja`;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
+
+-- ----------------------------
+-- Table structure for solr_fdid
+-- ----------------------------
+DROP TABLE IF EXISTS `solr_fdid`;
+CREATE TABLE `solr_fdid` (
+  `solr_fdid_id` int(11) NOT NULL,
+  `project_id` int(11) NOT NULL,
+  `mapping_id` int(11) NOT NULL,
+  `solr_field_name` varchar(250) NOT NULL,
+  `fdid` int(11) NOT NULL,
+  `named_filters` varchar(500) DEFAULT NULL,
+  PRIMARY KEY (`solr_fdid_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 --
 -- Table structure for table `accesscondition_object`
 --
