@@ -23,7 +23,7 @@ USE `Pamoja`;
 -- ----------------------------
 DROP TABLE IF EXISTS `solr_fdid`;
 CREATE TABLE `solr_fdid` (
-  `solr_fdid_id` int(11) NOT NULL,
+  `solr_fdid_id` int(11) NOT NULL AUTO_INCREMENT,
   `project_id` int(11) NOT NULL,
   `mapping_id` int(11) NOT NULL,
   `solr_field_name` varchar(250) NOT NULL,
