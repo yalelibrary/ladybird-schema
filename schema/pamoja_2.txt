@@ -642,16 +642,12 @@ DROP TABLE IF EXISTS `import_source`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `import_source` (
   `import_source_id` int(11) NOT NULL AUTO_INCREMENT,
-  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `sourceid` varchar(45) DEFAULT NULL,
-  `import_id` int(11) DEFAULT NULL,
-  `col` int(11) DEFAULT NULL,
-  `row` int(11) DEFAULT NULL,
-  `schema` varchar(45) DEFAULT NULL,
-  `url` varchar(500) DEFAULT NULL,
+  `created_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `url` varchar(200) DEFAULT NULL,
+  `xml_type` int(11) DEFAULT NULL,
+  `get_prefix` varchar(200) DEFAULT NULL,  
   PRIMARY KEY (`import_source_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `import_source`
