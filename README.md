@@ -1,3 +1,3 @@
-# ladybird schema
+# Pamoja Schema
 
-This repo contains the "pamoja" schema for "Ladybird 2". The repo is maintained for reference.
+This repo contains the SqlServer "pamoja" schema for "Ladybird 2". The repo exists as reference only.
